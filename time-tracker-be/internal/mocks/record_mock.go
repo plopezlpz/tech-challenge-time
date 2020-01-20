@@ -1,29 +1,32 @@
 package mocks
 
-import "time-tracker-be/internal/models"
+import (
+	"time-tracker-be/internal/models"
+)
 
 type RecordStoreMock struct {
-	idGen   int
-	records []*models.Record
+	Invocations map[string][]interface{}
 }
 
 func (m *RecordStoreMock) Add(r *models.Record) (*models.Record, error)  {
-	m.idGen += 1
-	rec := &models.Record{
-		ID:       m.idGen,
-		Name:     r.Name,
-		Start:    r.Start,
-		Finish:   r.Finish,
-		Duration: r.Finish - r.Start,
-	}
-	m.records = append(m.records, rec)
-	return rec, nil
+	m.addToInvocations("Add", r)
+	return r, nil
 }
 
 func (m *RecordStoreMock) List(from int64) ([]*models.Record, error)  {
-	return m.records, nil
+	m.addToInvocations("List", from)
+	return nil, nil
 }
 
-func NewRecordStoreMock(idGen int, recs []*models.Record) *RecordStoreMock {
-	return &RecordStoreMock{idGen:idGen, records:recs}
+func (m *RecordStoreMock) addToInvocations(key string, i interface{})  {
+	curr := m.Invocations[key]
+	if curr == nil {
+		m.Invocations[key] = append([]interface{}{}, i)
+	} else {
+		m.Invocations[key] = append(curr, i)
+	}
+}
+
+func NewRecordStoreMock() RecordStoreMock {
+	return RecordStoreMock{ Invocations: map[string][]interface{}{}}
 }

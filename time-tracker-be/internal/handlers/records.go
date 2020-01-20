@@ -21,6 +21,10 @@ func GetRecords(s models.RecordStore) gin.HandlerFunc {
 			return
 		}
 		recs, err := s.List(since)
+		if err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			return
+		}
 		c.JSON(http.StatusOK, recs)
 	}
 }
@@ -41,7 +45,7 @@ func AddRecord(s models.RecordStore) gin.HandlerFunc {
 			return
 		}
 
-		rec, err := s.Add(models.Record{
+		rec, err := s.Add(&models.Record{
 			Name:     body.Name,
 			Start:    body.Start,
 			Finish:   body.Finish,

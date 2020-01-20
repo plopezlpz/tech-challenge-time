@@ -9,7 +9,7 @@ type recordDAO struct {
 }
 
 // Add a record
-func (m *recordDAO) Add(r Record) (*Record, error) {
+func (m *recordDAO) Add(r *Record) (*Record, error) {
 	res := Record{}
 	err := m.db.QueryRow(`INSERT INTO records (name, start, finish, duration)
 		VALUES($1, $2, $3, $4) RETURNING id, name, start, finish, duration`,
