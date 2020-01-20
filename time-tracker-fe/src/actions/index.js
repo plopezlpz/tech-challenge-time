@@ -14,14 +14,14 @@ const selectRange = range => {
   };
 };
 
-export const updateCurrentRecord = record => {
+const updateCurrentRecord = record => {
   return {
     type: UPDATE_CURRENT_RECORD,
     payload: record
   };
 };
 
-export const fetchRecords = () => async (dispatch, getState) => {
+const fetchRecords = () => async (dispatch, getState) => {
   const since = rangeToStartDate(getState().range);
   const response = await server.get(`/records?start=${since}`);
 
@@ -31,7 +31,7 @@ export const fetchRecords = () => async (dispatch, getState) => {
   });
 };
 
-export const saveRecord = record => async dispatch => {
+const saveRecord = record => async dispatch => {
   const response = await server.post(`/records`, record);
 
   dispatch({
@@ -40,19 +40,24 @@ export const saveRecord = record => async dispatch => {
   });
 };
 
-export const saveRecordAndFetchRecords = record => async (
-  dispatch,
-  getState
-) => {
+const saveRecordAndFetchRecords = record => async (dispatch, getState) => {
   await dispatch(saveRecord(record));
 
   const since = rangeToStartDate(getState().range);
   dispatch(fetchRecords(since));
 };
 
-export const selectRangeAndFetchRecords = range => async dispatch => {
+const selectRangeAndFetchRecords = range => async dispatch => {
   dispatch(selectRange(range));
 
   const since = rangeToStartDate(range);
   dispatch(fetchRecords(since));
+};
+
+export {
+  updateCurrentRecord,
+  fetchRecords,
+  saveRecord,
+  saveRecordAndFetchRecords,
+  selectRangeAndFetchRecords
 };

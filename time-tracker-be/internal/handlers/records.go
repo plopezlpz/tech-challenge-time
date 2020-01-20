@@ -4,7 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strconv"
-	"timetracker/internal/models"
+	"time-tracker-be/internal/models"
 )
 
 // GetRecords will get the list of records

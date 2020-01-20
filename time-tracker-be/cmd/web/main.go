@@ -5,8 +5,8 @@ import (
 	"github.com/gin-gonic/gin"
 	_ "github.com/golang-migrate/migrate/v4/source/file"
 	_ "github.com/lib/pq"
-	"timetracker/internal/handlers"
-	"timetracker/internal/models"
+	"time-tracker-be/internal/handlers"
+	"time-tracker-be/internal/models"
 )
 
 func main() {
@@ -24,8 +24,7 @@ func main() {
 	// Web server setup
 	gin.SetMode(*mode)
 	r := gin.Default()
-	// CORS for localhost
-	r.Use(options)
+	r.Use(corsAndOptions)
 
 	// Routes setup
 	r.GET("/records", handlers.GetRecords(recordsStore))

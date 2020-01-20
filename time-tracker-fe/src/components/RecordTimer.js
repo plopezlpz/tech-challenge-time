@@ -10,10 +10,10 @@ import Stop from "@material-ui/icons/Stop";
 import PlayCircleFilledWhiteIcon from "@material-ui/icons/PlayCircleFilledWhite";
 import { connect } from "react-redux";
 import { saveRecordAndFetchRecords, updateCurrentRecord } from "../actions";
-import * as moment from "moment";
+import moment from "moment";
 import { formatDuration } from "../utils";
 
-class RecordTimer extends Component {
+export class RecordTimer extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -69,7 +69,6 @@ class RecordTimer extends Component {
         >
           <Grid item xs={8}>
             <TextField
-              id="standard-basic"
               label="Name"
               value={record.name || ""}
               size="small"
