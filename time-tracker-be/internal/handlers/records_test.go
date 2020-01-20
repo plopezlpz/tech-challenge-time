@@ -95,7 +95,6 @@ func TestAddRecords(t *testing.T) {
 		{
 			name:             "Not OK required fields",
 			record:           addRecordReq{Name: "", Start: 1, Finish: 10},
-			wantedArg:        &models.Record{Name: "r1", Start: 1, Finish: 10, Duration:9},
 			wantedStatus:     http.StatusBadRequest,
 		},
 	}
