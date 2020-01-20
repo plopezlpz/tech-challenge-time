@@ -1,5 +1,4 @@
-import { formatDuration, rangeToStartDate } from "./index";
-import { RANGES } from "../constants";
+import { formatDuration } from "./index";
 
 describe("utils", () => {
   describe("formatDuration", () => {
@@ -15,12 +14,4 @@ describe("utils", () => {
     });
   });
 
-  // describe("rangeToStartDate", () => {
-  //   it.each`
-  //     range        | expected
-  //     ${undefined} | ${RANGES.TODAY}
-  //   `("$range secs => $expected", ({ range, expected }) => {
-  //     expect(rangeToStartDate(range)).toBe(expected);
-  //   });
-  // });
 });

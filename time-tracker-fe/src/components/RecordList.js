@@ -8,7 +8,7 @@ import { formatDate } from "../utils";
 import { RANGES } from "../constants";
 import Typography from "@material-ui/core/Typography";
 
-class RecordList extends Component {
+export class RecordList extends Component {
   componentDidMount() {
     this.props.fetchRecords();
   }
@@ -36,9 +36,7 @@ class RecordList extends Component {
       return (
         <div key={record.id}>
           {this.renderDateHeader(arr[i - 1], record)}
-          <Record
-            record={record}
-          />
+          <Record record={record} />
           {isNotLast && <Divider variant="middle" />}
         </div>
       );

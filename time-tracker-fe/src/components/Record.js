@@ -12,11 +12,10 @@ export default function Record(props) {
           <Grid item xs={6}>
             <ListItemText primary={name} />
           </Grid>
-          <Grid item xs={2}>
-            <ListItemText primary={formatTime(start)} />
-          </Grid>
-          <Grid item xs={2}>
-            <ListItemText primary={formatTime(finish)} />
+          <Grid item xs={4}>
+            <ListItemText
+              secondary={formatTime(start) + " - " + formatTime(finish)}
+            />
           </Grid>
           <Grid item xs={2}>
             <ListItemText primary={formatDuration(total)} />
