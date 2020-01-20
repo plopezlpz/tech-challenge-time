@@ -16,7 +16,7 @@ type Record struct {
 // RecordStore - the record store implementation can be in-memory or in DB
 type RecordStore interface {
 	Add(Record) (*Record, error)
-	List(fromTimestamp int64) ([]Record, error)
+	List(fromTimestamp int64) ([]*Record, error)
 }
 
 // NewRecordDBStore - creates a new DB store

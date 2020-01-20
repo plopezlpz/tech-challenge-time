@@ -24,8 +24,7 @@ func migrateDB(db *sql.DB, migrationDir *string) {
 	}
 
 	m, err := migrate.NewWithDatabaseInstance(
-		fmt.Sprintf("file://%s", *migrationDir),
-		"postgres", driver)
+		fmt.Sprintf("file://%s", *migrationDir), "postgres", driver)
 
 	if err != nil {
 		log.Fatalf("migration failed... %v", err)

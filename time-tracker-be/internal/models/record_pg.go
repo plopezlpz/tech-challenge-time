@@ -22,7 +22,7 @@ func (m *recordDAO) Add(r Record) (*Record, error) {
 }
 
 // List records since timestamp
-func (m *recordDAO) List(fromTimestamp int64) ([]Record, error) {
+func (m *recordDAO) List(fromTimestamp int64) ([]*Record, error) {
 	rows, err := m.db.Query(`SELECT id, name, start, finish, duration FROM records
 		WHERE finish > $1 ORDER BY finish DESC`, fromTimestamp)
 	if err != nil {
@@ -30,14 +30,14 @@ func (m *recordDAO) List(fromTimestamp int64) ([]Record, error) {
 	}
 	defer rows.Close()
 
-	records := []Record{}
+	records := []*Record{}
 	for rows.Next() {
 		r := Record{}
 		err = rows.Scan(&r.ID, &r.Name, &r.Start, &r.Finish, &r.Duration)
 		if err != nil {
 			return nil, err
 		}
-		records = append(records, r)
+		records = append(records, &r)
 	}
 	if err = rows.Err(); err != nil {
 		return nil, err
