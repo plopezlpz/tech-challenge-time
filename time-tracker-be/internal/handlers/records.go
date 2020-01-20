@@ -38,8 +38,8 @@ type addRecordReq struct {
 // AddRecord will add a record
 func AddRecord(s models.RecordStore) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		body := addRecordReq{}
-		err := c.Bind(&body)
+		body := &addRecordReq{}
+		err := c.Bind(body)
 		if err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 			return
