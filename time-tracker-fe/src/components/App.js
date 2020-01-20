@@ -1,7 +1,7 @@
 import React from "react";
 import Container from "@material-ui/core/Container";
 import RecordList from "./RecordList";
-import Tracker from "./RecordTimer";
+import RecordTimer from "./RecordTimer";
 import { Paper, Box } from "@material-ui/core";
 import RecordMenu from "./RecordMenu";
 
@@ -11,7 +11,7 @@ function App() {
       <Container maxWidth="sm">
         <Box marginBottom={2} marginTop={2}>
           <Paper elevation={5}>
-            <Tracker />
+            <RecordTimer />
           </Paper>
         </Box>
 
