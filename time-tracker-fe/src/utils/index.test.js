@@ -13,5 +13,4 @@ describe("utils", () => {
       expect(formatDuration(secs)).toBe(expected);
     });
   });
-
 });
