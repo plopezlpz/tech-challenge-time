@@ -14,7 +14,7 @@ func main() {
 	addr := flag.String("addr", ":4000", "HTTP network address")
 	mode := flag.String("mode", "debug", "Use 'release' for production")
 	dsn := flag.String("dsn", "postgres://postgres@localhost:54320/pentotimetracker?sslmode=disable", "Postgres data source")
-	dbMigrationDir := flag.String("db.migration.dir", "", "Directory containing the DB migration files, if not provided migration will be skipped")
+	dbMigrationDir := flag.String("dbmigration", "", "Directory containing the DB migration files, if not provided migration will be skipped")
 	flag.Parse()
 
 	// DB setup
