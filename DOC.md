@@ -20,10 +20,10 @@ npm install
 npm run
 ```
 
-## Sinopsis
+## Synopsis
 The application is quite simple, the backend is a REST web service that connects to a postgres database, it only adds and lists the recorded times, it cannot update them. Pagination is not implemented.
 
-A user can set a name for a time record session and start the timer, once the user stops the timer, the session will be sent to the back end to be persisted and the list of previous sessions will be updated.
+A user can set a name for a time record session and start the timer, once the user stops the timer, the session will be sent to the back end to be persisted and the UI will show the updated list of sessions.
 
 ## Limitations
 - User management is not implemented, there are no users therefore these sessions don't belong to anyone.
