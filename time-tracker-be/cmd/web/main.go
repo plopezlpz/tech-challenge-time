@@ -5,6 +5,7 @@ import (
 	"github.com/gin-gonic/gin"
 	_ "github.com/golang-migrate/migrate/v4/source/file"
 	_ "github.com/lib/pq"
+	"log"
 	"time-tracker-be/internal/handlers"
 	"time-tracker-be/internal/models"
 )
@@ -30,5 +31,8 @@ func main() {
 	r.GET("/records", handlers.GetRecords(recordsStore))
 	r.POST("/records", handlers.AddRecord(recordsStore))
 
-	r.Run(*addr)
+	err := r.Run(*addr)
+	if err != nil {
+		log.Fatalf("could not start server %v", err)
+	}
 }
