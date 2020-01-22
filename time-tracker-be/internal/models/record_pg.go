@@ -44,3 +44,8 @@ func (m *recordDAO) List(fromTimestamp int64) ([]*Record, error) {
 	}
 	return records, nil
 }
+
+// NewRecordDBStore - creates a new DB store
+func NewRecordDBStore(db *sql.DB) RecordStore {
+	return &recordDAO{db: db}
+}

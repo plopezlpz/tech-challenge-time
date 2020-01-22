@@ -20,7 +20,7 @@ func configureDB(dsn, migrationDir *string) *sql.DB {
 func migrateDB(db *sql.DB, migrationDir *string) {
 	driver, err := postgres.WithInstance(db, &postgres.Config{})
 	if err != nil {
-		log.Fatal("could not start sql migration... %v", err)
+		log.Fatalf("could not start sql migration.. %v", err)
 	}
 
 	m, err := migrate.NewWithDatabaseInstance(

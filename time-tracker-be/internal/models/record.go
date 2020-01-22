@@ -1,9 +1,5 @@
 package models
 
-import (
-	"database/sql"
-)
-
 // Record - the record model
 type Record struct {
 	ID       int    `json:"id"`
@@ -17,9 +13,4 @@ type Record struct {
 type RecordStore interface {
 	Add(*Record) (*Record, error)
 	List(fromTimestamp int64) ([]*Record, error)
-}
-
-// NewRecordDBStore - creates a new DB store
-func NewRecordDBStore(db *sql.DB) RecordStore {
-	return &recordDAO{db: db}
 }
